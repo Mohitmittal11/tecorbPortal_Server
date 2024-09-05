@@ -2,10 +2,9 @@
   "name": "tecorbportal_server",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"netlify deploy --prod",
+    "build": "netlify deploy --prod",
     "start": "nodemon index.js"
   },
   "author": "Mohit",
@@ -29,5 +28,8 @@
     "nodemon": "^3.1.4",
     "serverless-http": "^3.2.0",
     "socket.io": "^4.7.5"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }
