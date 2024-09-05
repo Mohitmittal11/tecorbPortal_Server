@@ -10,6 +10,7 @@ import EmployeeModal from "./models/admin/employee.modal.js";
 import moment from "moment";
 import "dotenv/config";
 import routeV1 from "./routes/index.js";
+import serverless from "serverless-http";
 
 const app = express();
 const server = http.createServer(app);
@@ -211,3 +212,4 @@ mongoose
     console.log({ err });
     process.exit(1);
   });
+export const handler = serverless(app);
