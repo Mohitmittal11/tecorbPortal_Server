@@ -5,12 +5,11 @@ import mongoose from "mongoose";
 import http from "http";
 import { Server } from "socket.io";
 import cron from "node-cron";
-import NotificationModal from "./models/notification.modal.js";
-import EmployeeModal from "./models/admin/employee.modal.js";
+import NotificationModal from "../models/notification.modal.js";
+import EmployeeModal from "../models/admin/employee.modal.js";
 import moment from "moment";
 import "dotenv/config";
-import routeV1 from "./routes/index.js";
-import serverless from "serverless-http";
+import routeV1 from "../routes/index.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -28,10 +27,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.get("/", (req, res) => {
-    res.send("Hello World!");
-  });
+  res.send("Hello World!");
+});
 app.use("/api/v1", routeV1);
-
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -212,4 +210,3 @@ mongoose
     console.log({ err });
     process.exit(1);
   });
-export const handler = serverless(app);
