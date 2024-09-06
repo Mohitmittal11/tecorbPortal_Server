@@ -8,5 +8,5 @@ import { adminTokenAuth } from "../middlewares/adminToken.middleware.js";
 const router = express.Router();
 
 router.post("/addpolicy", adminTokenAuth, addPolicyData);
-router.get("/getPolicyData",  getPolicyData);
+router.get("/getPolicyData", getPolicyData);
 export default router;

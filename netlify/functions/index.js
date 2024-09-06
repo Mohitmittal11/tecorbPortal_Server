@@ -5,15 +5,15 @@ import mongoose from "mongoose";
 import http from "http";
 import { Server } from "socket.io";
 import cron from "node-cron";
-import NotificationModal from "../models/notification.modal.js";
-import EmployeeModal from "../models/admin/employee.modal.js";
+import NotificationModal from "../../models/notification.modal.js";
+import EmployeeModal from "../../models/admin/employee.modal.js";
 import moment from "moment";
 import "dotenv/config";
-import router from "../routes/index.js";
+import router from "../../routes/index.js";
 import serverless from "serverless-http";
 
-const api = express();
-const server = http.createServer(api);
+const app = express();
+const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
@@ -23,17 +23,17 @@ const io = new Server(server, {
 
 const port = 5001;
 
-api.use(cors());
-api.use(express.json());
-api.use(express.urlencoded({ extended: false }));
-api.use(cookieParser());
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-api.get("/api/hello", (req, res) => {
+app.get("/api/hello", (req, res) => {
   res.send("Hello World!");
 });
-api.use("/api/v1", router);
+app.use("/api/v1", router);
 
-api.use(function (req, res, next) {
+app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -213,4 +213,11 @@ mongoose
     process.exit(1);
   });
 
-export const handler = serverless(api);
+//   export async function handler(event, context) {
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify({ message: 'Netlify Function works!' }),
+//     };
+//   }
+
+module.exports.handler = serverless(app);
