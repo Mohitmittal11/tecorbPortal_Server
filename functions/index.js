@@ -28,7 +28,7 @@ api.use(express.json());
 api.use(express.urlencoded({ extended: false }));
 api.use(cookieParser());
 
-api.get("/api/v1", (req, res) => {
+api.get("/api/hello", (req, res) => {
   res.send("Hello World!");
 });
 api.use("/api/v1", routeV1);
