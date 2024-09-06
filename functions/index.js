@@ -28,11 +28,10 @@ api.use(express.json());
 api.use(express.urlencoded({ extended: false }));
 api.use(cookieParser());
 
-api.get("/", (req, res) => {
-    res.send("Hello World!");
-  });
+api.get("/api/v1", (req, res) => {
+  res.send("Hello World!");
+});
 api.use("/api/v1", routeV1);
-
 
 api.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -214,4 +213,4 @@ mongoose
     process.exit(1);
   });
 
-  export const handler = serverless(api);
+export const handler = serverless(api);
