@@ -5,11 +5,11 @@ import mongoose from "mongoose";
 import http from "http";
 import { Server } from "socket.io";
 import cron from "node-cron";
-import NotificationModal from "./models/notification.modal.js";
-import EmployeeModal from "./models/admin/employee.modal.js";
+import NotificationModal from "../models/notification.modal.js";
+import EmployeeModal from "../models/admin/employee.modal.js";
 import moment from "moment";
 import "dotenv/config";
-import routeV1 from "./routes/index.js";
+import routeV1 from "../routes/index.js";
 import serverless from "serverless-http";
 
 const api = express();
