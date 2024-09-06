@@ -9,7 +9,7 @@ import NotificationModal from "../models/notification.modal.js";
 import EmployeeModal from "../models/admin/employee.modal.js";
 import moment from "moment";
 import "dotenv/config";
-import routeV1 from "../routes/index.js";
+import router from "../routes/index.js";
 import serverless from "serverless-http";
 
 const api = express();
@@ -31,7 +31,7 @@ api.use(cookieParser());
 api.get("/api/hello", (req, res) => {
   res.send("Hello World!");
 });
-api.use("/api/v1", routeV1);
+api.use("/api/v1", router);
 
 api.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
